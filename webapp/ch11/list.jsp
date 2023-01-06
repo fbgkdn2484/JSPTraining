@@ -37,9 +37,9 @@
 				Class.forName("com.mysql.jdbc.Driver");	//1. jdbc드라이버 로딩하기
 				conn = DriverManager.getConnection(jdbcURL, dbID, dbPW);	//2.DB서버 접속하기 
 				*/
-				//DataSource를 이용한 커넥션 풀(connection pools) 설정
+				//DataSource를 이용한 커넥션 풀(connection pools) 설정, 오버헤드를 줄이기 위해
 				InitialContext ic = new InitialContext();	//우리가 검색해서 사용할 JNDI 서버 객체 생성
-				DataSource ds = (DataSource)ic.lookup("java:comp/env/jdbc/basicjsp");	//connection 객체 찾기
+				DataSource ds = (DataSource)ic.lookup("java:comp/env/jdbc/basicjsp");	//connection 객체 찾아서 사용한 후 커넥션 풀에 다시 반환하여 효율을 높임
 				conn = ds.getConnection(); // connection 객체를 할당 받아야 함
 
 				

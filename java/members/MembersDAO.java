@@ -13,7 +13,7 @@ public class MembersDAO {	//data access object
 		
 	}
 	
-	private MembersDAO() {
+	private MembersDAO() {	//생성자 외부에서 생성불가
 		
 		
 	}
@@ -32,11 +32,11 @@ public class MembersDAO {	//data access object
 		}
 	}
 	
-	public int userCheck(String id, String passwd) {
+	public int userCheck(String id, String passwd) {	//전달받은 아이디와 패스워드가 테이블에 저장되어있는지 확인해주는 로직
 		
 		Connection conn = null;		//데이터베이스 연결 객체
 		PreparedStatement pstmt = null;		//query 실행 객체
-		ResultSet rs = null;		//select문 실행 결과를 저장하는 객체
+		ResultSet rs = null;		//select문 실행 결과를 받아오는(저장하는) 객체
 		int result = -1;
 		
 		try {

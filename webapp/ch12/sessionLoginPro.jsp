@@ -11,12 +11,12 @@
 			String id = request.getParameter("id");
 			String passwd = request.getParameter("passwd");
 			
-			MembersDAO mdao = MembersDAO.getInstance();
-			int check = mdao.userCheck(id, passwd);
+			MembersDAO mdao = MembersDAO.getInstance();		//DAO객체 만드는 방법
+			int check = mdao.userCheck(id, passwd);			//호출하는 방법
 			
 			if(check == 1){
 				
-				session.setAttribute("id", id);		//세션 영역에 아이디 저장하겠다는 뜻
+				session.setAttribute("id", id);		//세션 영역에 아이디 저장하겠다는 뜻, 세션이 내장객체라 객체 생성 필요 x
 				response.sendRedirect("sessionMain.jsp");
 				
 			}
