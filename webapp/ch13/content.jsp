@@ -9,7 +9,8 @@
 
 <%
 	
-	int num = Integer.parseInt(request.getParameter("num"));	//request는 항상 문자열로 반환하기 때문에 형변환 필요
+	int num = Integer.parseInt(request.getParameter("num"));	//request는 항상 문자열로 반환하기 때문에 형변환 필요 네트워크로 전달 받는 숫자는 항상 문자열
+	int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	BoardDAO bdao = BoardDAO.getInstance();
@@ -60,9 +61,9 @@
 			</tr>
 			<tr>
 				<th colspan = "4" class = "thcolor">
-					<input type = "button" value = "글수정">
-					<input type = "button" value = "글삭제">
-					<input type = "button" value = "글목록" onclick="window.location = 'list.jsp'">
+					<input type = "button" value = "글수정" onclick="window.location = 'updateForm.jsp?num=<%= article.getNum()%>&pageNum=<%= pageNum %>'">
+					<input type = "button" value = "글삭제" onclick="window.location = 'deleteForm.jsp?num=<%= article.getNum()%>&pageNum=<%= pageNum %>'">
+					<input type = "button" value = "글목록" onclick="window.location = 'list.jsp?pageNum=<%= pageNum %>'">
 				</th> 
 			</tr>
 		</table>

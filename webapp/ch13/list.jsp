@@ -13,10 +13,28 @@
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	List<BoardVO> alist = null;			/* 값이 정해져 있지 않은데 값을 지정하면 오류가 발생할 수 도 있으므로 null값을 지정한다.  */
 	BoardDAO bdao = BoardDAO.getInstance();
-	count = bdao.getArticleCount();
+	count = bdao.getArticleCount();	 /* 갯수를 반환 */
+	
+	//-------------------------------페이지 처리
+	
+	int pageSize = 10; 		//end부분		한페이제 몇개를 출력할 지
+	int number = 0;			//현재 페이지의 시작 번호
+	String pageNum = null;
+	
+	pageNum = request.getParameter("pageNum");
+	if(pageNum == null){		//처음 페이지는 전달 받은게 없으므로
+		pageNum = "1";
+	}
+	
+	int currentPage = Integer.parseInt(pageNum);	//계산을 위해서 형변환  	//1				//2
+	int startRow = (currentPage-1) * pageSize + 1;						//(1-1)*10+1=1	
+	//int endRow = currentPage * pageSize;			//오라클일 때 사용
+	
+	number = count - (currentPage - 1) * pageSize;	//14-(1-1)*10 = 14	//14-(2-1)*10 = 4
+	//-------------------------------
 	
 	if(count > 0){
-		alist = bdao.getArticles();
+		alist = bdao.getArticles(startRow, pageSize);
 	}
 	
 %>
@@ -73,8 +91,10 @@
 		BoardVO article = alist.get(i);
 %>	
 		<tr>
-			<td align = "center" class = "tdcolor1"><%= count-- %></td>	<!-- 게시판 번호로 총 갯수에서 하나씩 빼서 번호를 표현 -->
-			<td align = "center" class = "tdcolor"><a href = "content.jsp?num=<%= article.getNum() %>"><%= article.getSubject() %></a></td>		<!-- content.jsp?뒤에 값을 전달 할 수 있다. -->
+			<td align = "center" class = "tdcolor1"><%= number-- %></td>	<!-- 현재 페이지 시작번호인 number 사용 -->
+			<td align = "center" class = "tdcolor">
+				<a href = "content.jsp?num=<%= article.getNum() %>&pageNum=<%= currentPage %>"><%= article.getSubject() %></a>
+			</td>		<!-- content.jsp?뒤에 값을 전달 할 수 있다. -->
 			<td align = "center" class = "tdcolor1"><%= article.getWriter() %></td>
 			<td align = "center" class = "tdcolor1"><%= sdf.format(article.getReg_date()) %></td>
 			<td align = "center" class = "tdcolor1"><%= article.getReadcount() %></td>
@@ -82,11 +102,49 @@
 <%	
 	}
 %>
-	</table>
+	</table><br><br>
 <%	
 		
 	}
 %>
+<%
+//-------------------------------페이지 번호 목록
 
+	if(count > 0){		//글이 하나라도 있을 때 표시
+		int pageCount = count / pageSize + (count%pageSize==0 ? 0 : 1);		//10개 이상이면 페이지 1, 2가 나오게 만듬
+		int startPage = 1;
+		if(currentPage % 10 != 0){
+			startPage = (int)(currentPage/10) * 10 + 1;						//1페이지인지 11페이지인지
+		}
+		else{
+			startPage = ((int)(currentPage/10)-1) * 10 + 1;
+		}
+		
+		int pageBlock = 10;  	//페이지 개수 10개만 보이게
+		int endPage = startPage + pageBlock - 1;
+		if(endPage > pageCount){
+			endPage = pageCount;
+		}
+		
+		if(startPage > 10){
+%>
+			<a href = "list.jsp?pageNum=<%= startPage-10 %>">[이전]</a>
+<%
+		}
+		
+		for(int i = startPage; i<= endPage; i++){
+%>
+			<a href = "list.jsp?pageNum=<%= i %>">[ <%= i %> ]</a>
+<%
+		}
+		if(endPage < pageCount){
+%>
+			<a href = "list.jsp?pageNum=<%= startPage+10 %>">[다음]</a>
+<%
+		}
+	}
+
+//-------------------------------
+%>
 </body>
 </html>

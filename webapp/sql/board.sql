@@ -14,3 +14,6 @@ select * from board order by num desc;
 select count(*) from board;
 
 select * from board where num = 3;
+
+select * from board order by num desc limit 0, 10;		-- 검색 레코드 수 제한함 시작번호, 레코드 수
+
