@@ -1,0 +1,262 @@
+@charset "UTF-8";
+
+/* @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gugi&display=swap');	 */	/* 폰트 */
+
+/* 마진 패딩 초기화 */
+* { padding: 0; margin: 0; }
+
+/* 페이지 기본 글꼴과 크기 설정 */
+body { font-family: 'font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";';   font-size: 14px; }
+img { border: 0; }
+ul { list-style-type: none; }
+h2 { border-bottom: solid 2px #dddddd; padding-top: 30px; margin-bottom: 10px;font-family: 'Do Hyeon', sans-serif;}
+
+/* <a> 태그 기본 설정 */
+a { display: inline-block; text-decoration: none; }
+a:link { text-decoration:none; color: #222222; }
+a:hover { text-decoration:none; color: #222222; }
+a:visited { text-decoration:none; color: #222222; }
+a:active { text-decoration:none; color: #222222; }
+
+/* 상단 헤더 */
+#top {  width: 1000px; height: 80px; margin: 0 auto; /* font-family: 'Gugi', cursive; */}
+#top h3 { position: absolute; top: 25px; font-size: 25px; }
+#top #topmenu { float: right; margin: 30px 60px 0 0;}
+#top #topmenu li { display: inline; }
+
+#menubar { margin: 0 auto; height: 48px; background-color: #4e73df; background-image: linear-gradient(90deg, #223349 10%, #662d91 100%); font-size: 16px; /* font-family: 'Do Hyeon', sans-serif; */}
+#menubar ul { width: 1000px; margin: 0 auto; padding: 14px 0 0 40px; }
+#menubar li { display: inline; margin-left: 100px; color: white; }
+#menubar a:link { color: white; }
+#menubar a:hover { color: white; }
+#menubar a:visited { color: white; }
+#menubar a:active { color: white; }
+
+/* .dropdown-menu {
+  position: absolute;
+  z-index: 1000;
+  display: none;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 1rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+} */
+
+.dropdown{
+  position : relative;
+  display : inline-block;
+}
+
+.dropbtn{
+  border : none;
+  background-color: white;
+/*   font-weight: 400;
+  color : rgb(37, 37, 37);
+  padding : 12px;
+  width :200px; */
+  text-align: center;
+  cursor : pointer;
+  /* font-size : 12px; */
+}
+
+
+.dropdown-content{
+  display : none;
+  position : absolute;
+  z-index : 1; /*다른 요소들보다 앞에 배치*/
+/*   font-weight: 400; */
+  background-color: #f9f9f9;
+  min-width : 150px;
+}
+
+.dropdown-content a{
+  display : block;
+  text-decoration : none;
+  color : rgb(37, 37, 37);
+  font-size: 12px;
+  padding : 12px 20px;
+}
+
+.dropdown-content a:hover{
+  background-color : #ececec
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.container{width:1000px; margin:0 auto;}
+.section1{height:200px;}
+.section2{height:1000px;}
+.section2 ul{width:100%;}
+.section2 ul li{width:23.5%; position:relative; display:inline-block; border:1px solid #a299bf; border-top:3px solid #a299bf; float:left; box-sizing:border-box; margin-right:2%; margin-bottom:1%;}
+.section2 ul li:nth-child(4n){margin-right:0; /* background-color:#333; */}
+.section2 ul li a{padding:20px;}
+.section2 ul li:hover{transform:scale(1.05); transition:all ease 0.3s;}
+.section2 ul li h5{font-size:14px;}
+.section2 ul li h6{font-size:20px; font-weight:300;}
+.info{margin-top:20px;}
+.info .star{float:left;}
+.info .date{float:right;}
+
+img{
+	width:1000px;
+	height:200px;
+}
+
+.search {
+   background-color: #f5f5f5;
+    padding: 30px;
+    text-align:center !important;
+}
+
+.box{
+	width: 50%;
+    margin: 10px auto;
+    font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 60px;
+}
+
+.searchbox{
+	text-align:center;
+	background: #662d91;
+    overflow: hidden;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 160px;
+    width:500px;
+}
+
+.sort{
+	width:200px !important;
+}
+
+#searchvalue{
+	
+	border: none;
+    background: white;
+    padding: 8px;
+    font-size: 18px;
+    width: 80%;
+    border-radius: 6px;
+    color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#searchvalue:focus{
+	outline: none;
+}
+
+.form-control{
+	font-size: 0.8rem;
+    border-radius: 10rem;
+    padding: 1.5rem 1rem;
+    
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6e707e;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d1d3e2;
+    border-radius: 0.35rem;
+    width:500px; display:inline-block;
+    text-align:auto;
+	
+}
+
+.notice{
+    width:auto; height:30px; line-height:30px; padding:10px 30px; border: 1px solid #d1d3e2; border-radius: 0.35rem; color:#333;
+}
+.notice h3{
+	width:20%; text-align:left; display:inline-block;
+}
+.notice p{
+	width:60%; text-align:left; display:inline-block;
+}
+.notice .arrow{
+	width:70px; float:right; display:inline-block;
+}
+.arrow .left{width:30px; float:left; height:30px; display:inline-block;  border-radius:5px 0px 0px 5px; border:1px solid #d5d5d5;}
+.arrow .right{width:30px; height:30px; display:inline-block;  border-radius:0px 5px 5px 0px; border:1px solid #d5d5d5;}
+.arrow .left:before{content:""; width:10px; height:10px; display:inline-block; border-left:2px solid #333; margin-left:10px; border-bottom: 2px solid #333; transform: rotate(45deg);}
+.arrow .right:before{content:""; width:10px; height:10px; display:inline-block; border-left:2px solid #333; margin-left:7px; border-bottom: 2px solid #333; transform: rotate(-135deg);}
+
+
+
+.btn{
+	font-size: 0.8rem;
+    border-radius: 10rem;
+    padding: 0.75rem 1rem;
+    color: #fff;
+    background-color: #2e59d9;
+    border-color: #2653d4;
+}
+
+.btn:hover {
+    color: #858796;
+    text-decoration: none;
+}
+
+.logo{
+	
+	text-align:center;
+	width: 165px;
+    height: 100px;
+	
+}
+
+.star{
+	
+	width: 20px;
+    height: 20px;
+	
+}
+
+.ll{
+	
+	padding: 15px;
+	
+}
+
+#wrapper{
+    display: inline-block;
+    height: auto;
+    min-height: 100%;
+    padding-bottom: 78px;
+    width: 100%;
+}
+
+footer{ margin: 0 auto; margin-bottom:0; background-color: #4e73df; background-image: linear-gradient(90deg, #223349 10%, #662d91 100%); color:white; text-align:center;
+		height : 58px; 
+		position : relative;
+		bottom: 0;
+		/* font-family: 'Do Hyeon', sans-serif; */
+}
+footer p { padding:20px; }
